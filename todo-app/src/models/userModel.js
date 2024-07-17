@@ -16,11 +16,11 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
   forgotPasswordToken: String,
-  forgotPas: Date,
+  forgotPasswordExpiry: Date,
   verifyToken: String,
   verifyTokenExpiry: Date,
 });
 
-const User = mongoose.model.users || mongoose.model("users", userSchema);
+const User = mongoose.models.users || mongoose.model("users", userSchema);
 
 export default User;
