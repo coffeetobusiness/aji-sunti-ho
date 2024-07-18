@@ -2,17 +2,21 @@ import mongoose from "mongoose";
 
 export async function connect() {
   try {
-    mongoose.connect(process.env.MONODB_URL);
+    mongoose.connect(process.env.MONGODB_URI);
     const connection = mongoose.connection;
+
     connection.on("connected", () => {
-      console.log("mongodb connected");
+      console.log("MongoDB connected successfully");
     });
+
     connection.on("error", (err) => {
-      console.log("mongodb connection error " + err);
+      console.log(
+        "MongoDB connection error. Please make sure MongoDB is running. " + err
+      );
       process.exit();
     });
   } catch (error) {
-    console.log("somthing went wrong in connection to DB");
+    console.log("Something goes wrong!");
     console.log(error);
   }
 }
