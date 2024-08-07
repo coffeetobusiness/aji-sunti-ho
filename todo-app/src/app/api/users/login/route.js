@@ -12,7 +12,7 @@ export async function POST(request) {
     const { email, password } = reqBody;
     console.log(reqBody);
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
 
     if (!user) {
       return NextResponse.json(
@@ -22,8 +22,11 @@ export async function POST(request) {
     }
 
     console.log("user exist");
+    console.log("hii")
 
     const validatepass = await bcryptjs.compare(password, user.password);
+
+    
 
     if (!validatepass) {
       return NextResponse.json(
@@ -52,7 +55,6 @@ export async function POST(request) {
     });
 
     return response;
-    
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

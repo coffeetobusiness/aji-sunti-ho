@@ -7,11 +7,11 @@ connect();
 export async function POST(request) {
   try {
     const reqBody = await request.json();
-    const { Token } = reqBody;
-    console.log(Token);
+    const { token } = reqBody;
+    console.log(token);
 
     const user = await User.findOne({
-      verifyToken: Token,
+      verifyToken: token,
       verifyTokenExpiry: { $gt: Date.now() },
     });
     if (!user) {
@@ -21,14 +21,14 @@ export async function POST(request) {
 
     user.isverified = true;
     user.verifyToken = undefined;
-    verifyTokenExpiry = undefined;
+    user.verifyTokenExpiry = undefined;
 
     await user.save();
 
-    return NextResponse.json(
-      { error: "email verified successfully" },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      message: "email verified successfully",
+      success: true,
+    });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
