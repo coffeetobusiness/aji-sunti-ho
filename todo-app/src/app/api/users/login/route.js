@@ -41,6 +41,8 @@ export async function POST(request) {
       email: user.email,
     };
 
+    console.log(tokenData)
+
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, {
       expiresIn: "1d",
     });
@@ -54,7 +56,11 @@ export async function POST(request) {
       httponly: true,
     });
 
+    console.log(response)
+
     return response;
+
+    
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

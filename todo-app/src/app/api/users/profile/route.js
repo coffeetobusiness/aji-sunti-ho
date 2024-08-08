@@ -6,7 +6,7 @@ import { getDataFromToken } from "@/helpers/getdataFromToken";
 
 connect();
 
-export async function GET(request) {
+export async function POST(request) {
 // extract data from token
 
  const userid = await getDataFromToken(request)
