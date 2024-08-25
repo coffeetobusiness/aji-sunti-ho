@@ -10,7 +10,7 @@ export async function POST(request) {
   try {
     const reqBody = await request.json();
     const { email, password } = reqBody;
-    console.log(reqBody);
+   // console.log(reqBody);
 
     const user = await User.findOne({email});
 
@@ -21,8 +21,8 @@ export async function POST(request) {
       );
     }
 
-    console.log("user exist");
-    console.log("hii")
+   // console.log("user exist");
+   // console.log("hii")
 
     const validatepass = await bcryptjs.compare(password, user.password);
 
@@ -41,7 +41,7 @@ export async function POST(request) {
       email: user.email,
     };
 
-    console.log(tokenData)
+   // console.log(tokenData)
 
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, {
       expiresIn: "1d",
@@ -56,7 +56,7 @@ export async function POST(request) {
       httponly: true,
     });
 
-    console.log(response)
+ //   console.log(response)
 
     return response;
 

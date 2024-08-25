@@ -1,4 +1,6 @@
 import Image from "next/image";
+import 'regenerator-runtime/runtime';
+
 
 export default function Home() {
   return (
