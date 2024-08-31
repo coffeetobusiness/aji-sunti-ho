@@ -39,7 +39,7 @@ export default function loginpage() {
   }, [user]);
 
   return (
-    <div className=" w-full min-h-screen bg-zinc-100 text-black p-10 ">
+    <div  className=" w-full min-h-screen bg-zinc-100 text-black p-10 ">
       <div
         className="rounded-full"
         style={{
