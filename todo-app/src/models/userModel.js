@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -12,13 +14,19 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   password: {
-      type: String,
-      require:[true, "please provide a password"]
+    type: String,
+    require: [true, "please provide a password"],
   },
   isverified: {
     type: Boolean,
     default: false,
   },
+  list: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "List",
+    },
+  ],
   forgotPasswordToken: String,
   forgotPasswordExpiry: Date,
   verifyToken: String,
