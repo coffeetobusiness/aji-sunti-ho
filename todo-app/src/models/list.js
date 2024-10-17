@@ -4,12 +4,14 @@ const listSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  user: [{
-    type: mongoose.Types.ObjectId,
-    ref: "users"
-  }]
+  user: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "users",
+    },
+  ],
 });
 
-const list = mongoose.models.list || mongoose.model("List", listSchema);
+const list = mongoose.models.List || mongoose.model("List", listSchema);
 
 export default list;
