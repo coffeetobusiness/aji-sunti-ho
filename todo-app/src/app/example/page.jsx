@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { get } from "mongoose";
+
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
@@ -16,7 +16,7 @@ mic.lang = "en-US";
 
 const TimeManagementPage = () => {
   const [isListening, setIsListening] = useState(false);
-  const [note, setNote] = useState(null); // single Note
+  const [note, setNote] = useState(null); 
   const [savedNotes, setSavedNotes] = useState([]); //
   const gettopics = async () => {
     try {
